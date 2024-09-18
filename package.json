@@ -1,0 +1,19 @@
+{
+  "type": "module",
+  "name": "practico2",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "tsc": "tsc && node index.js",
+    "tscInit": "tsc --init"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "@types/prompt-sync": "^4.2.3",
+    "prompt-sync": "^4.2.0",
+    "typescript": "^5.6.2"
+  }
+}

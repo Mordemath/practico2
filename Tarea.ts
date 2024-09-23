@@ -1,6 +1,6 @@
 export interface tarea {
     Ttitulo: String;
-    Tdescripcion: String;
+    Tdescripción: String;
     Testado: String;
     Tdificultad: "🌑🌑🌑" | "🌕🌕🌑" | "🌕🌕🌕";
     Tvencimiento: String;

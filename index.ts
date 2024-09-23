@@ -4,10 +4,19 @@ import chalk from './node_modules/chalk/source/index';
 import { tarea } from './Tarea';
 import Pausa from './pausa'
 let Scannf = prompt();
-export let tareas: tarea[];
+export let tareas: tarea[] = [];
 let aux: tarea;
 let op: string | number = `1`;
 let hayTareas: boolean = false;
+export let fTarea: tarea = {
+    Ttitulo: "vacio",
+    Tcreacion: "vacio",
+    Tdificultad: "vaico",
+    Testado: "vacio",
+    Tdescripción: "vacio",
+    TultimaEd: "vacio",
+    Tvencimiento: "Vacio",
+};
 while (op != `0`) {
     console.log(chalk.blueBright("Hola Olivia\n¿Qué deseas hacer?\n"));
     console.log("[1] Ver mis tareas.\n[2] Buscar una tarea.\n[3] Agregar una tarea.\n[0] Salir");
@@ -38,7 +47,7 @@ while (op != `0`) {
             op = -1;
             break;
         case `3`:
-            aux = am.AgregarTarea(`0`, false);
+            aux = am.AgregarTarea(`0`, fTarea);
             if (aux.Ttitulo == ` `) {
                 console.log(chalk.redBright(`Cancelado...`));
             }

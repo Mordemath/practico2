@@ -2,7 +2,7 @@ import pausa from "./pausa"
 import prompt from "prompt-sync";
 const Scannf = prompt();
 //CargarTitulo*************************************************************************************************************************
-export default function CargarTitulo(titulo: string, f: string) {
+export default function CargarTitulo(titulo: string, f: string): string {
     console.clear();
     do {
         console.log(`[] Ingresa el titulo o solo [Enter] para cancelar.\n`);
@@ -17,7 +17,7 @@ export default function CargarTitulo(titulo: string, f: string) {
             pausa();
             console.clear();
         }
-    } while (titulo == " " || titulo == "  " || titulo == "   " || titulo.lenght > 100);
+    } while (titulo == " " || titulo == "  " || titulo == "   " || titulo.length > 100);
     if (titulo == "") {
         return `-1`;
     }

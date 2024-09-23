@@ -3,9 +3,13 @@ import chalk from './node_modules/chalk/source/index';
 import { tarea } from './Tarea';
 import Pausa from './pausa'
 import CargarTitulo from './altaTitulo';
+import CargarDescripción from './altaDescripcion';
+import CargarEstado from './altaEstado';
+import CargarDificultad from './altaDificultad';
+import CargarVencimiento from './altaVencimiento';
 const Scannf = prompt();
 
-export function AgregarTarea(f: string, tareaM: tarea | boolean) {// Con esta función cargamos una nueva tarea cuando el parametro f(Función) está en 0, y cuando no, la función actua como editor de tarea. el parametro tareaM solo sirve cuando editamos una tarea.
+export function AgregarTarea(f: string, tareaM: tarea) {// Con esta función cargamos una nueva tarea cuando el parametro f(Función) está en 0, y cuando no, la función actua como editor de tarea. el parametro tareaM solo sirve cuando editamos una tarea.
     console.clear();
     let op: string = `1`;
     let fechaHoy: Date = new Date();
@@ -73,27 +77,27 @@ export function AgregarTarea(f: string, tareaM: tarea | boolean) {// Con esta fu
                 }
                 break;
             case `2`:
-                aux = controles.CargarDescripción(descripción, f);
-                if (aux == `-1` ) {
-                    console.clear();
-                    console.log(chalk.redBright(`Cancelado...`));
-                }
-                else {
-                    if(aux == ` ` && f != `0`){
-                        aux = descripción;
-                    }
-                    Auxtarea.Tdescripcion = aux;
-                    console.log(chalk.greenBright(`Descripción guardada: ${aux}`));
-                }
-                break;
-            case `3`:
-                aux = controles.CargarEstado(estado, f);
+                aux = CargarDescripción(descripción, f);
                 if (aux == `-1`) {
                     console.clear();
                     console.log(chalk.redBright(`Cancelado...`));
                 }
                 else {
-                    if(aux == ` ` && f != `0`){
+                    if (aux == ` ` && f != `0`) {
+                        aux = descripción;
+                    }
+                    Auxtarea.Tdescripción = aux;
+                    console.log(chalk.greenBright(`Descripción guardada: ${aux}`));
+                }
+                break;
+            case `3`:
+                aux = CargarEstado(estado, f);
+                if (aux == `-1`) {
+                    console.clear();
+                    console.log(chalk.redBright(`Cancelado...`));
+                }
+                else {
+                    if (aux == ` ` && f != `0`) {
                         aux = estado;
                     }
                     Auxtarea.Testado = aux;
@@ -101,13 +105,13 @@ export function AgregarTarea(f: string, tareaM: tarea | boolean) {// Con esta fu
                 }
                 break;
             case `4`:
-                aux = controles.CargarDificultad(dificultad, f);
+                aux = CargarDificultad(dificultad, f);
                 if (aux == `-1`) {
                     console.clear();
                     console.log(chalk.redBright(`Cancelado...`));
                 }
                 else {
-                    if(aux == ` ` && f != `0`){
+                    if (aux == ` ` && f != `0`) {
                         aux = dificultad;
                     }
                     Auxtarea.Tdificultad = aux;
@@ -115,14 +119,14 @@ export function AgregarTarea(f: string, tareaM: tarea | boolean) {// Con esta fu
                 }
                 break;
             case `5`:
-                aux = controles.CargarVencimiento(vencimiento, f);
+                aux = CargarVencimiento(vencimiento, f).toString();
                 if (aux == `-1`) {
                     console.clear();
                     console.log(chalk.redBright(`Cancelado...`));
                 }
                 else {
-                    if(aux == ` ` && f != `0`){
-                        aux = vencimiento;
+                    if (aux == ` ` && f != `0`) {
+                        aux = vencimiento.toString();
                     }
                     Auxtarea.Tvencimiento = aux;
                     console.log(chalk.greenBright(`Vencimiento guardado: ${aux}`));
@@ -150,7 +154,7 @@ export function AgregarTarea(f: string, tareaM: tarea | boolean) {// Con esta fu
         console.clear();
     }
     if (op != `-1`) {
-        if(f == `1`){
+        if (f == `1`) {
             Auxtarea.TultimaEd = fechaActual;
         }
         return Auxtarea;

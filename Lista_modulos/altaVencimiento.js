@@ -1,12 +1,12 @@
-import pausa from "./pausa"
+import pausa from "./pausa.js";
 import prompt from "prompt-sync";
 const Scannf = prompt();
-export default function CargarVencimiento(vencimiento: string, f: string): string {
-    let año: number | string;
-    let mes: string;
-    let dia: string;
-    let diasPorMes:number[] = [];
-    let bisiesto: boolean = false;
+export default function CargarVencimiento(vencimiento, f) {
+    let año;
+    let mes;
+    let dia;
+    let diasPorMes = [];
+    let bisiesto = false;
     console.clear();
     //Pedimos el año**************************************************************************
     do {

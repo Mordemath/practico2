@@ -1,4 +1,4 @@
-import pausa from "./pausa"
+import pausa from "./pausa.js"
 import prompt from "prompt-sync";
 const Scannf = prompt();
 export default function CargarDificultad(dificultad: string, f: string): string {

@@ -1,9 +1,12 @@
-import * as am from './am'; //Diria que es un ABM pero solo da alta y modificaxd
-import PromptSync from 'prompt-sync';
-import chalk from './node_modules/chalk/source/index';
-import { tarea } from './Tarea';
-import Pausa from './pausa'
-const Scannf = PromptSync();
+import * as am from './Lista_modulos/am.js'; //Diria que es un ABM pero solo da alta y modificaxd
+import prompt from 'prompt-sync';
+import chalk from './node_modules/chalk/source/index.js';
+import { tarea } from './Tarea.js';
+import Pausa from './Lista_modulos/pausa.js'
+import MenuVer from './Lista_modulos/MenuVer.js';
+import VerDetalles from './Lista_modulos/VerDetalles.js';
+import BuscarPor from './Lista_modulos/BuscarPor.js';
+let Scannf = prompt();
 export let tareas: tarea[] = [];
 let aux: tarea;
 let op: string | number = `1`;
@@ -28,7 +31,7 @@ while (op != `0`) {
             break;
         case `1`:
             if (hayTareas) {
-                MenuVer.MenuVer();
+                MenuVer();
             }
             else {
                 console.log(chalk.redBright(`No hay tareas aún...`));
@@ -36,7 +39,7 @@ while (op != `0`) {
             break;
         case `2`:
             if (hayTareas) {
-                MenuVer.BuscarPor(tareas, `1`, 0);
+                BuscarPor(tareas, `1`, 0);
             }
             else {
                 console.log(chalk.redBright(`No hay tareas aún...`));
@@ -54,7 +57,7 @@ while (op != `0`) {
             else {
                 tareas.push(aux);
                 console.log(chalk.greenBright(`¡Datos guardados!`));
-                MenuVer.VerDetalles(tareas.length - 1, tareas);
+                VerDetalles(tareas.length - 1, tareas);
                 hayTareas = true;
             }
             break;

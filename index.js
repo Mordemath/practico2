@@ -1,15 +1,16 @@
-"use strict";
-
-import { AgregarTarea } from "./am.js"; //Diria que es un ABM pero solo da alta y modificaxd
-import prompt_sync_1 from "prompt-sync";
-import index_1 from "./node_modules/chalk/source/index.js";
-import pausa_1 from "./pausa.js";
-var Scannf = (0, prompt_sync_1)();
-export const tareas = [];
-var aux;
-var op = "1";
-var hayTareas = false;
-export const fTarea = {
+import * as am from './Lista_modulos/am.js'; //Diria que es un ABM pero solo da alta y modificaxd
+import prompt from 'prompt-sync';
+import chalk from './node_modules/chalk/source/index.js';
+import Pausa from './Lista_modulos/pausa.js';
+import MenuVer from './Lista_modulos/MenuVer.js';
+import VerDetalles from './Lista_modulos/VerDetalles.js';
+import BuscarPor from './Lista_modulos/BuscarPor.js';
+let Scannf = prompt();
+export let tareas = [];
+let aux;
+let op = `1`;
+let hayTareas = false;
+export let fTarea = {
     Ttitulo: "vacio",
     Tcreacion: "vacio",
     Tdificultad: "vaico",
@@ -18,47 +19,47 @@ export const fTarea = {
     TultimaEd: "vacio",
     Tvencimiento: "Vacio",
 };
-while (op != "0") {
-    console.log(index_1.blueBright("Hola Olivia\n¿Qué deseas hacer?\n"));
+while (op != `0`) {
+    console.log(chalk.blueBright("Hola Olivia\n¿Qué deseas hacer?\n"));
     console.log("[1] Ver mis tareas.\n[2] Buscar una tarea.\n[3] Agregar una tarea.\n[0] Salir");
-    op = Scannf("Opci\u00F3n: ");
+    op = Scannf(`Opción: `);
     switch (op) {
-        case "0":
-            console.log(index_1.blueBright("Hasta la proxima Olivia..."));
+        case `0`:
+            console.log(chalk.blueBright(`Hasta la proxima Olivia...`));
             break;
-        case "1":
+        case `1`:
             if (hayTareas) {
-                MenuVer.MenuVer();
+                MenuVer();
             }
             else {
-                console.log(index_1.redBright("No hay tareas a\u00FAn..."));
+                console.log(chalk.redBright(`No hay tareas aún...`));
             }
             break;
-        case "2":
+        case `2`:
             if (hayTareas) {
-                MenuVer.BuscarPor(tareas, "1", 0);
+                BuscarPor(tareas, `1`, 0);
             }
             else {
-                console.log(index_1.redBright("No hay tareas a\u00FAn..."));
+                console.log(chalk.redBright(`No hay tareas aún...`));
             }
             break;
         default:
-            console.log(index_1.redBright("Opci\u00F3n invalida..."));
+            console.log(chalk.redBright(`Opción invalida...`));
             op = -1;
             break;
-        case "3":
-            aux = AgregarTarea("0", fTarea);
-            if (aux.Ttitulo == " ") {
-                console.log(index_1.redBright("Cancelado..."));
+        case `3`:
+            aux = am.AgregarTarea(`0`, fTarea);
+            if (aux.Ttitulo == ` `) {
+                console.log(chalk.redBright(`Cancelado...`));
             }
             else {
                 tareas.push(aux);
-                console.log(index_1.greenBright("\u00A1Datos guardados!"));
-                MenuVer.VerDetalles(tareas.length - 1, tareas);
+                console.log(chalk.greenBright(`¡Datos guardados!`));
+                VerDetalles(tareas.length - 1, tareas);
                 hayTareas = true;
             }
             break;
     }
-    (0, pausa_1)();
+    Pausa();
     console.clear();
 }

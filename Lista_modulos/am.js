@@ -1,29 +1,27 @@
 import prompt from 'prompt-sync';
-import chalk from './node_modules/chalk/source/index';
-import { tarea } from './Tarea';
-import Pausa from './pausa'
-import CargarTitulo from './altaTitulo';
-import CargarDescripción from './altaDescripcion';
-import CargarEstado from './altaEstado';
-import CargarDificultad from './altaDificultad';
-import CargarVencimiento from './altaVencimiento';
+import chalk from "../node_modules/chalk/source/index.js";
+import Pausa from './pausa.js';
+import CargarTitulo from './altaTitulo.js';
+import CargarDescripción from './altaDescripcion.js';
+import CargarEstado from './altaEstado.js';
+import CargarDificultad from './altaDificultad.js';
+import CargarVencimiento from './altaVencimiento.js';
 const Scannf = prompt();
-
-export function AgregarTarea(f: string, tareaM: tarea) {// Con esta función cargamos una nueva tarea cuando el parametro f(Función) está en 0, y cuando no, la función actua como editor de tarea. el parametro tareaM solo sirve cuando editamos una tarea.
+export function AgregarTarea(f, tareaM) {
     console.clear();
-    let op: string = `1`;
-    let fechaHoy: Date = new Date();
-    let fechaActual: string = fechaHoy.toLocaleDateString('es-ES', { year: 'numeric', month: '2-digit', day: '2-digit' });
-    let titulo: string = "----------";
-    let estado: string = "Pendiente";
-    let descripción: string = "----------";
-    let vencimiento: string = "----------";
-    let dificultad: "🌑🌑🌑" | "🌕🌕🌑" | "🌕🌕🌕" = "🌑🌑🌑";
-    let ultimaEd: string = fechaActual;
-    let creación: string = fechaActual;
-    let Auxtarea: tarea;
-    let tTituloVacio: boolean = true;
-    let aux: string;
+    let op = `1`;
+    let fechaHoy = new Date();
+    let fechaActual = fechaHoy.toLocaleDateString('es-ES', { year: 'numeric', month: '2-digit', day: '2-digit' });
+    let titulo = "----------";
+    let estado = "Pendiente";
+    let descripción = "----------";
+    let vencimiento = "----------";
+    let dificultad = "🌑🌑🌑";
+    let ultimaEd = fechaActual;
+    let creación = fechaActual;
+    let Auxtarea;
+    let tTituloVacio = true;
+    let aux;
     if (f == `0`) {
         Auxtarea = {
             Ttitulo: titulo,
@@ -33,7 +31,7 @@ export function AgregarTarea(f: string, tareaM: tarea) {// Con esta función car
             Tvencimiento: vencimiento,
             TultimaEd: ultimaEd,
             Tcreacion: creación,
-        }
+        };
     }
     else {
         tTituloVacio = false;
@@ -45,7 +43,7 @@ export function AgregarTarea(f: string, tareaM: tarea) {// Con esta función car
             Tvencimiento: tareaM.Tvencimiento,
             TultimaEd: tareaM.TultimaEd,
             Tcreacion: tareaM.Tcreacion,
-        }
+        };
     }
     //DEclaraciónes de variables inicializadas
     while (op != `0` && op != `-1`) {
@@ -148,7 +146,6 @@ export function AgregarTarea(f: string, tareaM: tarea) {// Con esta función car
             default:
                 console.log(chalk.redBright(`Opción invalida...`));
                 break;
-
         }
         Pausa();
         console.clear();

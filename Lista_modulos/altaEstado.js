@@ -1,12 +1,12 @@
-import pausa from "./pausa"
+import pausa from "./pausa.js";
 import prompt from "prompt-sync";
 const Scannf = prompt();
-export default function CargarEstado(estado: string, f: string): string {
+export default function CargarEstado(estado, f) {
     console.clear();
     do {
         console.log(`[] Ingresa el estado o solo [Enter] para cancelar:\n([P]endiente) / [E]n curso / [T]erminada / [C]ancelada:`);
         estado = Scannf(`>`);
-        if(estado == ` ` && f == `1`){
+        if (estado == ` ` && f == `1`) {
             return ` `;
         }
         if (estado != "P" && estado != "E" && estado != "T" && estado != "C" && estado != "") {

@@ -14,7 +14,7 @@ export function AgregarTarea(f: string, tareaM: tarea): tarea {// Con esta funci
     let op: string = `1`;
     let fechaHoy: Date = new Date();
     let fechaActual: string = fechaHoy.toLocaleDateString('es-ES', { year: 'numeric', month: '2-digit', day: '2-digit' });
-    let titulo: string = "----------";
+    let titulo: string = ` `;
     let estado: string = "Pendiente";
     let descripción: string = "----------";
     let vencimiento: string = "----------";

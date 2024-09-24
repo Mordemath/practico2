@@ -1,13 +1,13 @@
-import pausa from "../pausa.js"
+import pausa from "./pausa.js"
 import prompt from "prompt-sync";
 const Scannf = prompt();
 export default function CargarVencimiento(vencimiento: string, f: string): string {
     let año: number | string;
     let mes: string;
     let dia: string;
-    let diasPorMes:number[] = [];
+    let diasPorMes: number[] = [];
     let bisiesto: boolean = false;
-    console.clear();
+    let años: number;
     //Pedimos el año**************************************************************************
     do {
         console.log(`[] Ingresa el año de vencimiento o solo [Enter] para cancelar:\n`);
@@ -16,15 +16,16 @@ export default function CargarVencimiento(vencimiento: string, f: string): strin
         if (año == ` ` && f == `1`) {
             return ` `;
         }
-        if (([año].length != 4 || isNaN(parseInt(año))) && año != "") {
-            console.log("Año ingresado invalido, solo se admiten numeros de 4 digitos sin espacios.\nVuelva a intentarlo.");
-            pausa();
-            console.clear();
-        }
+        años = Number(año);
+            if ((año.length != 4 || isNaN(años)) && año != "") {
+                console.log("Año ingresado invalido, solo se admiten numeros de 4 digitos sin espacios.\nVuelva a intentarlo.");
+                pausa();
+                console.clear();
+            }
         else {
             bisiesto = (parseInt(año) % 4 === 0 && (parseInt(año) % 100 !== 0 || parseInt(año) % 400 === 0));
         }
-    } while ([año].length != 4 || isNaN(parseInt(año)) && año != "");
+    } while ((año.length != 4 || isNaN(años)) && año != "");
     if (año == "") {
         return `-1`;
     }

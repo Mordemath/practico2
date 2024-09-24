@@ -7,7 +7,7 @@ export default function CargarVencimiento(vencimiento, f) {
     let dia;
     let diasPorMes = [];
     let bisiesto = false;
-    console.clear();
+    let años;
     //Pedimos el año**************************************************************************
     do {
         console.log(`[] Ingresa el año de vencimiento o solo [Enter] para cancelar:\n`);
@@ -16,7 +16,8 @@ export default function CargarVencimiento(vencimiento, f) {
         if (año == ` ` && f == `1`) {
             return ` `;
         }
-        if (([año].length != 4 || isNaN(parseInt(año))) && año != "") {
+        años = Number(año);
+        if ((año.length != 4 || isNaN(años)) && año != "") {
             console.log("Año ingresado invalido, solo se admiten numeros de 4 digitos sin espacios.\nVuelva a intentarlo.");
             pausa();
             console.clear();
@@ -24,7 +25,7 @@ export default function CargarVencimiento(vencimiento, f) {
         else {
             bisiesto = (parseInt(año) % 4 === 0 && (parseInt(año) % 100 !== 0 || parseInt(año) % 400 === 0));
         }
-    } while ([año].length != 4 || isNaN(parseInt(año)) && año != "");
+    } while ((año.length != 4 || isNaN(años)) && año != "");
     if (año == "") {
         return `-1`;
     }

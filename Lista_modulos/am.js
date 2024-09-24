@@ -12,7 +12,7 @@ export function AgregarTarea(f, tareaM) {
     let op = `1`;
     let fechaHoy = new Date();
     let fechaActual = fechaHoy.toLocaleDateString('es-ES', { year: 'numeric', month: '2-digit', day: '2-digit' });
-    let titulo = "----------";
+    let titulo = ` `;
     let estado = "Pendiente";
     let descripción = "----------";
     let vencimiento = "----------";

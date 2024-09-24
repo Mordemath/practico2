@@ -1,9 +1,9 @@
-import * as am from './am';
-import prompt from 'prompt-sync';
+import * as am from './am'; //Diria que es un ABM pero solo da alta y modificaxd
+import PromptSync from 'prompt-sync';
 import chalk from './node_modules/chalk/source/index';
 import { tarea } from './Tarea';
 import Pausa from './pausa'
-let Scannf = prompt();
+const Scannf = PromptSync();
 export let tareas: tarea[] = [];
 let aux: tarea;
 let op: string | number = `1`;

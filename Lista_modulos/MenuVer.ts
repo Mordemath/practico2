@@ -7,8 +7,9 @@ import VerTarea from "./VerTarea.js";
 import { tarea } from "../Tarea.js";
 import VerDetalles from "./VerDetalles.js";
 import BuscarPor from "./BuscarPor.js";
+import MenuVerDYEd from "./MenuVerDYEd.js";
 const Scannf = prompt();
-export default function MenuVer(): void {
+export default function MenuVer(): tarea[] {
     let tareas: tarea[] = index.tareas;
     let op: string | number = `-1`;
     while (op != `0`) {
@@ -59,33 +60,11 @@ export default function MenuVer(): void {
                 break;
         }
         if (op != `0` && op != `-1`) {
-            console.log(`¿Deseas ver los detalles de alguna?`);
-            console.log(`Introduce el numero de tarea para verla o solo [ENTER] para volver...\n`);
-            op = Scannf(`>`);
-            if (op != ``) {
-                let indice: number = parseInt(op) - 1;
-                let existeTarea: number = BuscarPor(tareas, `0`, parseInt(op));
-                if (existeTarea != -1) {
-                    VerDetalles((indice), tareas);
-                    console.log("Si deseas editarla ingresa [E] o solo [ENTER] para volver\n");
-                    op = Scannf(`>`);
-                    if (op == `E` || op == `e`) {
-                        let aux: tarea = AgregarTarea(`1`, tareas[indice]);
-                        if (aux.Ttitulo != ` `) {
-                            tareas[indice] = aux;
-                        }
-                        else {
-                            console.log(chalk.redBright(`Cancelado...`));
-                            op = `-1`;
-                        }
-                    }
-                    else {
-                        op = `-1`;
-                    }
-                }
-            }
+            tareas = MenuVerDYEd(op, tareas);
+            op = `-1`;
             pausa();
         }
         console.clear();
     }
+    return tareas;
 }

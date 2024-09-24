@@ -31,7 +31,7 @@ while (op != `0`) {
             break;
         case `1`:
             if (hayTareas) {
-                MenuVer();
+                tareas = MenuVer();
             }
             else {
                 console.log(chalk.redBright(`No hay tareas aún...`));
